@@ -1,0 +1,4 @@
+data/
+
+# python cache
+__pycache__/
