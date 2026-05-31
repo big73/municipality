@@ -3,7 +3,7 @@ import streamlit as st
 from constants.config import DATA_URL, LOCAL_FILE
 
 
-@st.cache_data(show_spinner=False)
+@st.cache_data(show_spinner="Downloading the dataset...")
 def download_csv():
     """
     Télécharge le fichier CSV s'il n'est pas présent localement,
