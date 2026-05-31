@@ -1,5 +1,11 @@
-from constants.config import LOCAL_FILE, MATCHING_COLUMNS
+
+import urllib
+import json
 import pandas as pd
+import streamlit as st
+
+from constants.config import LOCAL_FILE, MATCHING_COLUMNS
+
 
 def load_csv():
     """
@@ -30,3 +36,11 @@ def load_csv():
     df["age"] = (pd.Timestamp.now() - df["date_naissance"]).dt.days // 365
     
     return df
+
+
+# Fonction en cache pour télécharger le GeoJSON des départements français
+@st.cache_data
+def load_geojson():
+    url = "https://raw.githubusercontent.com/gregoiredavid/france-geojson/master/departements-version-simplifiee.geojson"
+    with urllib.request.urlopen(url) as response:
+        return json.load(response)
