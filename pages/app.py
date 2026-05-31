@@ -5,4 +5,3 @@ from utils.downloader import download_csv
 download_csv()
 load_csv()
 
-st.write("done")
